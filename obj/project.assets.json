@@ -5858,11 +5858,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\SesethuM\\source\\repos\\CosmosDBCitiesTutorial\\CosmosDBCitiesTutorial.csproj",
+      "projectUniqueName": "C:\\Users\\SesethuM\\source\\repos\\dotnet-api-cosmosdb\\CosmosDBCitiesTutorial.csproj",
       "projectName": "CosmosDBCitiesTutorial",
-      "projectPath": "C:\\Users\\SesethuM\\source\\repos\\CosmosDBCitiesTutorial\\CosmosDBCitiesTutorial.csproj",
+      "projectPath": "C:\\Users\\SesethuM\\source\\repos\\dotnet-api-cosmosdb\\CosmosDBCitiesTutorial.csproj",
       "packagesPath": "C:\\Users\\SesethuM\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\SesethuM\\source\\repos\\CosmosDBCitiesTutorial\\obj\\",
+      "outputPath": "C:\\Users\\SesethuM\\source\\repos\\dotnet-api-cosmosdb\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "C:\\Users\\SesethuM\\AppData\\Roaming\\NuGet\\NuGet.Config",
