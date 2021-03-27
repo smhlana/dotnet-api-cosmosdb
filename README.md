@@ -184,7 +184,7 @@ Add the following code to _ICosmosDbService.cs_:
 		}
 	}
 
-By now you should get an error stating that Item cannot be found. To fix this, now we have to add a model defining the data schema. Add a folder called **Models**. Right-click on the project in **Solution Explorer** and select **Add > New Folder**. 
+By now you should get an error stating that Item cannot be found. To fix this, now we have to add a model defining the data schema. Add a folder called _Models_. Right-click on the project in **Solution Explorer** and select **Add > New Folder**. 
 
 Inside the folder, create a file called _Item.cs_. Add the following code to Item.cs:
 
@@ -208,7 +208,7 @@ Inside the folder, create a file called _Item.cs_. Add the following code to Ite
 		}
 	}
 
-To access the configuration information in _appsettings.json_ within the **Startup** class, found in _Startup.cs_, you need to use the **IConfiguration** service provided by .NET. We must add a method which reads the configuration information as follows:
+To access the configuration information in _appsettings.json_ within the _Startup_ class, found in _Startup.cs_, you need to use the _IConfiguration_ service provided by .NET. We must add a method which reads the configuration information as follows:
 
 	private static async Task<CosmosDbService> InitializeCosmosClientInstanceAsync(IConfigurationSection configurationSection)
      	{
@@ -223,3 +223,91 @@ To access the configuration information in _appsettings.json_ within the **Start
 
                 return cosmosDbService;
 	}
+
+Add the namespace for the **CosmosDbService** in the Using section.
+
+	using CosmosDBCitiesTutorial.Services;
+
+We initialize the client as a singleton instance based on the configuration information in the CosmosDb key in the appsettings.json file. In that same class, replace the _ConfigureServices_ method as follows:
+
+	public void ConfigureServices(IServiceCollection services)
+	{
+		services.AddControllers();
+
+		services.AddSingleton<ICosmosDbService>(InitializeCosmosClientInstanceAsync(Configuration.GetSection("CosmosDb")).GetAwaiter().GetResult());
+	}
+
+## Adding Resources to the Database and Querying
+We now add items to the database, as well as query those items, with the help of the Azure Cosmos DB library.
+
+To do this, we create a controller to handle incoming HTTP requests and responses. The controller will receive requests from the client and communicate with the database via the CosmosDbService, sending the response back to the client.
+
+To add the controller, right-click on the **Controllers** folder and select **Add > Controller**. In **Add New Scaffold Item** under **Common > API**, select **API Controller – Empty** and click **Add**. Name the controller _CitiesController.cs_ and click **Add**. The name of the controller must end with “Controller”. Replace the controller with this code:
+
+	using Microsoft.AspNetCore.Mvc;
+	using CosmosDBCitiesTutorial.Services;
+	using System.Threading.Tasks;
+	using CosmosDBCitiesTutorial.Models;
+	using System.Collections.Generic;
+	using System;
+
+	namespace CosmosDBCitiesTutorial.Controllers
+	{
+		[Route("api/[controller]")]
+		[ApiController]
+		public class CitiesController : ControllerBase
+		{
+			private readonly ICosmosDbService _cosmosDbService;
+			public CitiesController(ICosmosDbService cosmosDbService)
+			{
+				_cosmosDbService = cosmosDbService;
+			}
+
+			[HttpGet()] 	// Get: api/cities
+			[ActionName("Index")]
+			public async Task<IEnumerable<Item>> Index()	// Returns all documents stored in the DB
+			{
+				return await _cosmosDbService.GetItemsAsync("SELECT * FROM c");
+			}
+
+			[HttpPost("create")]	// Post: api/cities/create
+			[ActionName("Create")]
+			public async Task<ActionResult> CreateAsync([Bind("Id,Name,Country,ZipCode")] Item item)
+			{
+				if (ModelState.IsValid)
+				{
+				item.Id = Guid.NewGuid().ToString();
+				await _cosmosDbService.AddItemAsync(item);
+					return RedirectToAction("Index");   // Returns updated list of documents stored in the DB
+				}
+
+			return StatusCode(500);
+			}
+		}
+	}
+
+Our API is now ready to access data from the database, but there is one more thing we must do. We set the launchUrl to point to our controller. Open **Properties > launchSettings.json** and change the _launchUrl_ property to “_api/cities_” in both profiles. You can also delete _WeatherForecastController.cs_ under the **Controllers** folder and _WeatherForecast.cs_ on the root. 
+
+## Results
+Press F5 to run the application. You should see an empty array appear on the screen. That is because we have not added items to the database. When you run the application the Index method is called because we specified the launchUrl to be “api/cities”. The Index method queries the database for all the documents. 
+
+To add an item, we use Postman, so first start Postman. **Disable SSL certificate verification** because Postman does not attempt to access the user’s certificate store to validate the Security Controls **ST Root Authority** certificate. As such, it fails to make a secure SSL connection to the Security Controls console server, resulting in the error “Error: Unable to verify the first certificate”. To disable verification, click **File > Settings**. In the **General** tab, toggle the **SSL certificate verification** to off and close **Settings**.
+
+We now create a POST request to the API to add an item. Select **Create a request** under **Get started**. Set the HTTP method to **POST**. Set the request URL to https://localhost:44376/api/cities/create. Ensure the port number matches that of your local instance. Select the **Body** tab then the **raw** radio button. Click on **Text** to show other options and select **JSON**. Enter the body of the request, as shown below, and click **Send**. 
+
+	{
+		"name": "Cape Town",
+		"country": "South Africa",
+		"zipcode": "8001"
+	}
+
+
+
+You should get a response like this:
+
+
+
+
+Now, if you go to your browser and type the url https://localhost:44376/api/cities, you should see a JSON response with the city you just added. Again, ensure the port number matches that of your local instance.
+
+
