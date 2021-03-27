@@ -301,13 +301,23 @@ We now create a POST request to the API to add an item. Select **Create a reques
 		"zipcode": "8001"
 	}
 
-
+![postman_post](https://user-images.githubusercontent.com/11193045/112726332-7be37c00-8f25-11eb-80d6-83e56fdbb60e.PNG)
 
 You should get a response like this:
 
-
-
+![postman_post_response](https://user-images.githubusercontent.com/11193045/112726335-8271f380-8f25-11eb-8c29-cf65e9a76cf1.PNG)
 
 Now, if you go to your browser and type the url https://localhost:44376/api/cities, you should see a JSON response with the city you just added. Again, ensure the port number matches that of your local instance.
 
+![postman_post_response_browser](https://user-images.githubusercontent.com/11193045/112726357-a03f5880-8f25-11eb-9c8e-801c52af0d08.PNG)
 
+There you have it. We can add items to the database and also query the data stored there using our API.
+
+## Conclusion
+This article demonstrated how to connect to an Azure Cosmos DB account using a .NET API. We first had to create the database account, together with the database and container in Azure portal. Then, we created an API that uses a controller and a service to communicate with the database and the client. The result is an application that can access data stored in Azure Cosmos DB. 
+
+Use your new knowledge to create your own database. Or, expand on the techniques you learned here to add even more database-related features to your app.
+
+To learn more, check out these useful resources:
+Azure Cosmos DB documentation (https://docs.microsoft.com/en-us/azure/cosmos-db/)
+Partitioning and horizontal scaling in Azure Cosmos DB (https://docs.microsoft.com/en-us/azure/cosmos-db/partitioning-overview)
