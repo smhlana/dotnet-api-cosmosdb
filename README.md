@@ -39,4 +39,6 @@ You don’t have to configure the settings in the other tabs. Let’s use the de
 
 Click on Review + create. Review the settings when the page has finished loading and click Create. Then, wait for the deployment to complete. This can take several minutes.
 
-![Uploading Basic settings.PNG…]()
+![image](https://user-images.githubusercontent.com/11193045/112724548-9402cd80-8f1c-11eb-904b-5dec29f0644e.png)
+
+When this is done, select **Go to resource**.
