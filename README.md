@@ -141,31 +141,31 @@ Add the following code in _CosmosDbService_.cs:
 	{
 		public class CosmosDbService : ICosmosDbService
 		{
-		private Container _container;
+			private Container _container;
 
-		public CosmosDbService(CosmosClient dbClient, string databaseName, string containerName)
-		{
-			this._container = dbClient.GetContainer(databaseName, containerName);
-		}
-
-		public async Task AddItemAsync(Item item)
-		{
-			await this._container.CreateItemAsync<Item>(item, new PartitionKey(item.Country));
-		}
-
-		public async Task<IEnumerable<Item>> GetItemsAsync(string queryString)
-		{
-			var query = this._container.GetItemQueryIterator<Item>(new QueryDefinition(queryString));
-			List<Item> results = new List<Item>();
-			while (query.HasMoreResults)
+			public CosmosDbService(CosmosClient dbClient, string databaseName, string containerName)
 			{
-			var response = await query.ReadNextAsync();
-
-			results.AddRange(response.ToList());
+				this._container = dbClient.GetContainer(databaseName, containerName);
 			}
 
-			return results;
-		}
+			public async Task AddItemAsync(Item item)
+			{
+				await this._container.CreateItemAsync<Item>(item, new PartitionKey(item.Country));
+			}
+
+			public async Task<IEnumerable<Item>> GetItemsAsync(string queryString)
+			{
+				var query = this._container.GetItemQueryIterator<Item>(new QueryDefinition(queryString));
+				List<Item> results = new List<Item>();
+				while (query.HasMoreResults)
+				{
+				var response = await query.ReadNextAsync();
+
+				results.AddRange(response.ToList());
+				}
+
+				return results;
+			}
 		}
 	}
 
