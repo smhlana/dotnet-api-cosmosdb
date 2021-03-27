@@ -20,15 +20,15 @@ For this project, you need:
 ## Create an Azure Cosmos DB Account
 To create an Azure Cosmos DB account, first ensure you have an active Microsoft Azure account. Then, log on to the Azure portal.
 
-Next, from the menu or Azure Services, select Create a resource.
+Next, from the menu or Azure Services, select **Create a resource**.
 
 ![Create resource](https://user-images.githubusercontent.com/11193045/112723983-d5de4480-8f19-11eb-9512-09f7f530a609.PNG)
 
-On the new page, type Azure Cosmos DB on the search bar and select it from the list that appears, then select Create on the next page.
+On the new page, type **Azure Cosmos DB** on the search bar and select it from the list that appears, then select **Create** on the next page.
 
 ![search and select](https://user-images.githubusercontent.com/11193045/112724333-7f720580-8f1b-11eb-8484-0152057c5c60.png)
 
-Under the Basics tab, fill in the required settings:
+Under the **Basics** tab, fill in the required settings:
 
 - **Subscription** – Select the Azure subscription you want to use for this account
 - **Resource Group** – Select the resource group or Create new with a unique name
@@ -39,10 +39,23 @@ Under the Basics tab, fill in the required settings:
 
 You don’t have to configure the settings in the other tabs. Let’s use the default settings.
 
+![Basic settings](https://user-images.githubusercontent.com/11193045/112724691-4175e100-8f1d-11eb-852c-1191b0c703f1.PNG)
 
-
-Click on Review + create. Review the settings when the page has finished loading and click Create. Then, wait for the deployment to complete. This can take several minutes.
+Click on **Review + create**. Review the settings when the page has finished loading and click **Create**. Then, wait for the deployment to complete. This can take several minutes.
 
 ![image](https://user-images.githubusercontent.com/11193045/112724548-9402cd80-8f1c-11eb-904b-5dec29f0644e.png)
 
 When this is done, select **Go to resource**.
+
+![image](https://user-images.githubusercontent.com/11193045/112724726-60747300-8f1d-11eb-810f-6bd3c564cea3.png)
+
+## Create a Database and Container
+After clicking on **Go to resource**, you will be taken to the Azure Cosmos DB account page. On the left menu, select **Data Explorer**, then select **New Database**
+on the page that loads. A panel for creating a new database will appear on the right of the page. By creating a database, we are creating a logical container to contain one or more collections. 
+ 
+![Uploading New database.png…]()
+
+
+On the **New Database** panel, enter the **Database id** and click **OK**.  
+
+
