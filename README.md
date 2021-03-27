@@ -24,11 +24,17 @@ On the new page, type Azure Cosmos DB on the search bar and select it from the l
 Under the Basics tab, fill in the required settings:
 
 **Subscription** – Select the Azure subscription you want to use for this account
+
 **Resource Group** – Select the resource group or Create new with a unique name
+
 **Account Name** – Enter a unique account name
+
 **API** – Select Core SQL for this project
+
 **Location** – Choose the location closest to you or your users
+
 **Capacity Mode** – Select Provisioned throughput
+
 
 
 You don’t have to configure the settings in the other tabs. Let’s use the default settings.
