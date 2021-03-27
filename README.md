@@ -65,12 +65,11 @@ After loading, the new database will display on the top left corner of that page
 
 An **Add Container** panel for creating a new database appears on the right of the page. For the **Database**, select **Use existing** and select the database you have just created from the dropdown menu. Enter a unique container ID. The partition key will automatically partition data among multiple servers, so documents with the same value for the partition key will be grouped in one partition. Choose an appropriate partition key for effective horizontal scaling. For this project, we choose “country” as the partition key. Click **OK**. 
 
-
+![create container_ok](https://user-images.githubusercontent.com/11193045/112725173-826ef500-8f1f-11eb-8fb2-07bf77039316.PNG)
 
 If you expand the database, you will see that a container has been created inside the database.
 
-
-
+![conainer created](https://user-images.githubusercontent.com/11193045/112725212-c06c1900-8f1f-11eb-86e9-c165c1266e71.PNG)
 
 ## Create a .NET API and Connect to the Database
 ### Create a .NET API
@@ -78,7 +77,27 @@ We now create a new standalone .NET Web API using Visual Studio 2019 and C#, and
 
 First, open Visual Studio and select **Create New Project** in the startup page. 
 
-
+![create a new project](https://user-images.githubusercontent.com/11193045/112725226-d679d980-8f1f-11eb-94a3-8892f8acb502.png)
 
 In the **Create a new project** step, filter to (**C#, All Platforms, Web**), then select **ASP.NET Core Web Application** and click **Next**. 
+
+![create a new project_filter](https://user-images.githubusercontent.com/11193045/112725249-eb566d00-8f1f-11eb-80fd-b7df7ad2a144.png)
+
+In **Configure your new project**, name the project, choose a location, and click **Create**.
+
+![configure your new project](https://user-images.githubusercontent.com/11193045/112725279-0cb75900-8f20-11eb-9ae4-dcc17dd23ea3.png)
+
+In the **Create a new ASP.NET Core web application** dialog, select **API** and click **Create**. You can change the target framework to ASP.NET Core 5.0 on this dialog, or you can change it later, as you will see in the next step.
+
+![create API](https://user-images.githubusercontent.com/11193045/112725310-307a9f00-8f20-11eb-8647-db43da4073c9.png)
+
+When the new project loads, change the target framework to .NET Core 5.0. You can do this in the **Project Explorer**. Right click on the project (**CosmosDBCitiesTutorial**) and click on **Properties**. 
+
+Under the **Application** tab, choose **.NET Core 5.0** from the **Target framework** dropdown. If you do not have .NET Core 5.0 installed, choose **Install other frameworks** in the dropdown menu and you will be directed to a website where you can download and install it. Make sure you save the changes when that is done.
+
+![Uploading change target framework.png…]()
+
+We will now install the Azure Cosmos DB library. We will use this to connect to the database using the SQL API. Again, right click on the project and select **Manage NuGet Packages**. In the NuGet package manager, select the **Browse** tab and search for **Microsoft.Azure.Cosmos** and select it, then click **Install**.
+
+
 
