@@ -117,4 +117,4 @@ Open appsettings.json and add the CosmosDb key, as shown below, under AllowedHos
        "ContainerName": ""
  }
 
-
+The _DatabaseName_ is the name of the account, “CitiesDB”, and the CotainerName is the name of the container, “Cities”. The Account is the endpoint URI of the account. To find this, go to your Azure Cosmos DB account, in the overview section. The Key is the PRIMARY KEY found in the account page under **Settings > Keys**. The configuration file should now look like this:
