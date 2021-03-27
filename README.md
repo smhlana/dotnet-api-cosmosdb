@@ -53,9 +53,12 @@ When this is done, select **Go to resource**.
 After clicking on **Go to resource**, you will be taken to the Azure Cosmos DB account page. On the left menu, select **Data Explorer**, then select **New Database**
 on the page that loads. A panel for creating a new database will appear on the right of the page. By creating a database, we are creating a logical container to contain one or more collections. 
  
-![Uploading New database.png…]()
 
 
 On the **New Database** panel, enter the **Database id** and click **OK**.  
+
+
+After loading, the new database will display on the top left corner of that page. To create a container inside the database, hover over the database name, click on the ellipsis button that appears, and select **New Container**. Alternatively, you can click **New Container** at the top of the database list.
+
 
 
