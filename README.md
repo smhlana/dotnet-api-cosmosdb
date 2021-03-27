@@ -95,9 +95,26 @@ When the new project loads, change the target framework to .NET Core 5.0. You ca
 
 Under the **Application** tab, choose **.NET Core 5.0** from the **Target framework** dropdown. If you do not have .NET Core 5.0 installed, choose **Install other frameworks** in the dropdown menu and you will be directed to a website where you can download and install it. Make sure you save the changes when that is done.
 
-![Uploading change target framework.png…]()
+![change target framework](https://user-images.githubusercontent.com/11193045/112725418-cf9f9680-8f20-11eb-8e4e-8c840966cba3.png)
 
 We will now install the Azure Cosmos DB library. We will use this to connect to the database using the SQL API. Again, right click on the project and select **Manage NuGet Packages**. In the NuGet package manager, select the **Browse** tab and search for **Microsoft.Azure.Cosmos** and select it, then click **Install**.
 
+![install library](https://user-images.githubusercontent.com/11193045/112725455-0c6b8d80-8f21-11eb-9987-442ba8aecbbe.png)
+
+Select **OK** in the **Preview Changes** dialog that appears, then accept the license agreement in the **License Acceptance** that appears next.
+
+In the code, we need to use the Azure Cosmos DB connection details. We use the appsettings.json application configuration file to store configuration settings such as database connection strings, account keys, and more. Find this file in the solution explorer on the root of the project folder. 
+
+![appsettings](https://user-images.githubusercontent.com/11193045/112725483-31f89700-8f21-11eb-8f5c-2db7ee2387a4.PNG)
+
+Open appsettings.json and add the CosmosDb key, as shown below, under AllowedHosts.
+
+"AllowedHosts": "*",
+"CosmosDb": {
+   	"Account": "",
+       "Key": "",
+       "DatabaseName": "",
+       "ContainerName": ""
+ }
 
 
