@@ -69,3 +69,16 @@ An **Add Container** panel for creating a new database appears on the right of t
 
 If you expand the database, you will see that a container has been created inside the database.
 
+
+
+
+## Create a .NET API and Connect to the Database
+### Create a .NET API
+We now create a new standalone .NET Web API using Visual Studio 2019 and C#, and connect to the Cosmos DB account.
+
+First, open Visual Studio and select **Create New Project** in the startup page. 
+
+
+
+In the **Create a new project** step, filter to (**C#, All Platforms, Web**), then select **ASP.NET Core Web Application** and click **Next**. 
+
