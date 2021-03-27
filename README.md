@@ -53,12 +53,19 @@ When this is done, select **Go to resource**.
 After clicking on **Go to resource**, you will be taken to the Azure Cosmos DB account page. On the left menu, select **Data Explorer**, then select **New Database**
 on the page that loads. A panel for creating a new database will appear on the right of the page. By creating a database, we are creating a logical container to contain one or more collections. 
  
-
+![New database](https://user-images.githubusercontent.com/11193045/112724938-599a3000-8f1e-11eb-86fc-d6089fda6aba.png)
 
 On the **New Database** panel, enter the **Database id** and click **OK**.  
 
+![New database panel](https://user-images.githubusercontent.com/11193045/112724958-6c146980-8f1e-11eb-9e52-65be290b67de.png)
 
 After loading, the new database will display on the top left corner of that page. To create a container inside the database, hover over the database name, click on the ellipsis button that appears, and select **New Container**. Alternatively, you can click **New Container** at the top of the database list.
 
+![new container](https://user-images.githubusercontent.com/11193045/112724975-88180b00-8f1e-11eb-809c-a15b93069443.png)
 
+An **Add Container** panel for creating a new database appears on the right of the page. For the **Database**, select **Use existing** and select the database you have just created from the dropdown menu. Enter a unique container ID. The partition key will automatically partition data among multiple servers, so documents with the same value for the partition key will be grouped in one partition. Choose an appropriate partition key for effective horizontal scaling. For this project, we choose “country” as the partition key. Click **OK**. 
+
+
+
+If you expand the database, you will see that a container has been created inside the database.
 
