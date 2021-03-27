@@ -131,44 +131,42 @@ Add the two classes into the folder. To add a class, right-click on the folder a
 
 Add the following code in _CosmosDbService_.cs:
 
-Add the following code in CosmosDbService.cs:
+	using System.Collections.Generic;
+	using System.Linq;
+	using System.Threading.Tasks;
+	using Microsoft.Azure.Cosmos;
+	using CosmosDBCitiesTutorial.Models;
 
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.Azure.Cosmos;
-using CosmosDBCitiesTutorial.Models;
-
-namespace CosmosDBCitiesTutorial.Services
-{
-   	public class CosmosDbService : ICosmosDbService
+	namespace CosmosDBCitiesTutorial.Services
 	{
-    	private Container _container;
+		public class CosmosDbService : ICosmosDbService
+		{
+		private Container _container;
 
-    	public CosmosDbService(CosmosClient dbClient, string databaseName, string containerName)
-    	{
-        	this._container = dbClient.GetContainer(databaseName, containerName);
-    	}
+		public CosmosDbService(CosmosClient dbClient, string databaseName, string containerName)
+		{
+			this._container = dbClient.GetContainer(databaseName, containerName);
+		}
 
-    	public async Task AddItemAsync(Item item)
-    	{
-        	await this._container.CreateItemAsync<Item>(item, new PartitionKey(item.Country));
-    	}
+		public async Task AddItemAsync(Item item)
+		{
+			await this._container.CreateItemAsync<Item>(item, new PartitionKey(item.Country));
+		}
 
-    	public async Task<IEnumerable<Item>> GetItemsAsync(string queryString)
-    	{
-        	var query = this._container.GetItemQueryIterator<Item>(new QueryDefinition(queryString));
-        	List<Item> results = new List<Item>();
-        	while (query.HasMoreResults)
-        	{
-            	var response = await query.ReadNextAsync();
+		public async Task<IEnumerable<Item>> GetItemsAsync(string queryString)
+		{
+			var query = this._container.GetItemQueryIterator<Item>(new QueryDefinition(queryString));
+			List<Item> results = new List<Item>();
+			while (query.HasMoreResults)
+			{
+			var response = await query.ReadNextAsync();
 
-                results.AddRange(response.ToList());
-        	}
+			results.AddRange(response.ToList());
+			}
 
-        	return results;
-   	}
+			return results;
+		}
+		}
 	}
-}
 
 
