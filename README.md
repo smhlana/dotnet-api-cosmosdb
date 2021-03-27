@@ -19,7 +19,7 @@ To create an Azure Cosmos DB account, first ensure you have an active Microsoft 
 Next, from the menu or Azure Services, select Create a resource.
 ![Create resource](https://user-images.githubusercontent.com/11193045/112723983-d5de4480-8f19-11eb-9512-09f7f530a609.PNG)
 On the new page, type Azure Cosmos DB on the search bar and select it from the list that appears, then select Create on the next page.
-
+![search and select](https://user-images.githubusercontent.com/11193045/112724333-7f720580-8f1b-11eb-8484-0152057c5c60.png)
 
 Under the Basics tab, fill in the required settings:
 
@@ -29,6 +29,7 @@ Under the Basics tab, fill in the required settings:
 **API** – Select Core SQL for this project
 **Location** – Choose the location closest to you or your users
 **Capacity Mode** – Select Provisioned throughput
+
 
 You don’t have to configure the settings in the other tabs. Let’s use the default settings.
 
