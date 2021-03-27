@@ -119,7 +119,7 @@ Open appsettings.json and add the CosmosDb key, as shown below, under AllowedHos
 
 The _DatabaseName_ is the name of the account, “CitiesDB”, and the CotainerName is the name of the container, “Cities”. The Account is the endpoint URI of the account. To find this, go to your Azure Cosmos DB account, in the overview section. The Key is the PRIMARY KEY found in the account page under **Settings > Keys**. The configuration file should now look like this:
 
-
+![appsettings_new key](https://user-images.githubusercontent.com/11193045/112725817-bdbef300-8f22-11eb-8876-43144752213e.PNG)
 
 The setup is complete. Now, let’s get on with the code.
 
@@ -169,4 +169,57 @@ Add the following code in _CosmosDbService_.cs:
 		}
 	}
 
+Add the following code to _ICosmosDbService.cs_:
 
+	using System.Collections.Generic;
+	using System.Threading.Tasks;
+	using CosmosDBCitiesTutorial.Models;
+
+	namespace CosmosDBCitiesTutorial.Services
+	{
+		public interface ICosmosDbService
+		{
+		    Task AddItemAsync(Item item);
+		    Task<IEnumerable<Item>> GetItemsAsync(string query);
+		}
+	}
+
+By now you should get an error stating that Item cannot be found. To fix this, now we have to add a model defining the data schema. Add a folder called **Models**. Right-click on the project in **Solution Explorer** and select **Add > New Folder**. 
+
+Inside the folder, create a file called _Item.cs_. Add the following code to Item.cs:
+
+	using Newtonsoft.Json;
+
+	namespace CosmosDBCitiesTutorial.Models
+	{
+		public class Item
+		{
+		    [JsonProperty(PropertyName = "id")]
+		    public string Id { get; set; }
+
+		    [JsonProperty(PropertyName = "name")]
+		    public string Name { get; set; }
+
+		    [JsonProperty(PropertyName = "country")]
+		    public string Country { get; set; }
+
+		    [JsonProperty(PropertyName = "zipcode")]
+		    public string ZipCode { get; set; }
+		}
+	}
+
+To access the configuration information in _appsettings.json_ within the **Startup** class, found in _Startup.cs_, you need to use the **IConfiguration** service provided by .NET. We must add a method which reads the configuration information as follows:
+
+	private static async Task<CosmosDbService> InitializeCosmosClientInstanceAsync(IConfigurationSection configurationSection)
+     	{
+        	string databaseName = configurationSection.GetSection("DatabaseName").Value;
+                string containerName = configurationSection.GetSection("ContainerName").Value;
+                string account = configurationSection.GetSection("Account").Value;
+                string key = configurationSection.GetSection("Key").Value;
+                Microsoft.Azure.Cosmos.CosmosClient client = new Microsoft.Azure.Cosmos.CosmosClient(account, key);
+                CosmosDbService cosmosDbService = new CosmosDbService(client, databaseName, containerName);
+                Microsoft.Azure.Cosmos.DatabaseResponse database = await client.CreateDatabaseIfNotExistsAsync(databaseName);
+                await database.Database.CreateContainerIfNotExistsAsync(containerName, "/country");
+
+                return cosmosDbService;
+	}
