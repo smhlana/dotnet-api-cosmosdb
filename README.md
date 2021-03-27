@@ -119,7 +119,7 @@ The _DatabaseName_ is the name of the account, “CitiesDB”, and the CotainerN
 
 The setup is complete. Now, let’s get on with the code.
 
-## Create a Cosmos DB Service and Connect to the Database
+### Create a Cosmos DB Service and Connect to the Database
 Because we want to separate the database logic from the controller, we require a class containing the logic to connect to the database. We add a class called CosmosDbService and an interface called ICosmosDbService and put these inside a folder called **Services**.
 To do this, first create the folder. Right-click on the project in **Solution Explorer** and select **Add > New Folder**. 
 
