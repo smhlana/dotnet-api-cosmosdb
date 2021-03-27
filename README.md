@@ -8,14 +8,10 @@ This article demonstrates how to configure and use an Azure Cosmos DB SQL accoun
 
 ## Prerequisites
 For this project, you need:
-  - Visual Studio 2019. Download and install Visual Studio 2019 Community Edition.
-    https://visualstudio.microsoft.com/downloads/
-  - .NET 5.0 SDK. Download it from Microsoft  
-    https://dotnet.microsoft.com/download/dotnet/5.0
-  - Postman to test the web API. Download it from Postman. 
-    https://www.postman.com/downloads/
-  - An active Microsoft Azure account. If you don’t have one already, set one up on the Microsoft website.
-    https://azure.microsoft.com/en-ca/free/
+  - Visual Studio 2019. Download and install Visual Studio 2019 Community Edition (https://visualstudio.microsoft.com/downloads/).
+  - .NET 5.0 SDK. Download it from Microsoft (https://dotnet.microsoft.com/download/dotnet/5.0).
+  - Postman to test the web API. Download it from Postman (https://www.postman.com/downloads/)
+  - An active Microsoft Azure account. If you don’t have one already, set one up on the Microsoft website (https://azure.microsoft.com/en-ca/free/)
 
 ## Create an Azure Cosmos DB Account
 To create an Azure Cosmos DB account, first ensure you have an active Microsoft Azure account. Then, log on to the Azure portal.
