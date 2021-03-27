@@ -17,3 +17,4 @@ For this project, you need:
 To create an Azure Cosmos DB account, first ensure you have an active Microsoft Azure account. Then, log on to the Azure portal.
 
 Next, from the menu or Azure Services, select Create a resource.
+![Create resource](https://user-images.githubusercontent.com/11193045/112723983-d5de4480-8f19-11eb-9512-09f7f530a609.PNG)
