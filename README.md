@@ -118,3 +118,57 @@ Open appsettings.json and add the CosmosDb key, as shown below, under AllowedHos
  }
 
 The _DatabaseName_ is the name of the account, “CitiesDB”, and the CotainerName is the name of the container, “Cities”. The Account is the endpoint URI of the account. To find this, go to your Azure Cosmos DB account, in the overview section. The Key is the PRIMARY KEY found in the account page under **Settings > Keys**. The configuration file should now look like this:
+
+
+
+The setup is complete. Now, let’s get on with the code.
+
+## Create a Cosmos DB Service and Connect to the Database
+Because we want to separate the database logic from the controller, we require a class containing the logic to connect to the database. We add a class called CosmosDbService and an interface called ICosmosDbService and put these inside a folder called **Services**.
+To do this, first create the folder. Right-click on the project in **Solution Explorer** and select **Add > New Folder**. 
+
+Add the two classes into the folder. To add a class, right-click on the folder and select **Add > Class** and name the class, for example, _CosmosDbService.cs_ or _ICosmosDbService.cs_. 
+
+Add the following code in _CosmosDbService_.cs:
+
+Add the following code in CosmosDbService.cs:
+
+using System.Collections.Generic;
+using System.Linq;
+using System.Threading.Tasks;
+using Microsoft.Azure.Cosmos;
+using CosmosDBCitiesTutorial.Models;
+
+namespace CosmosDBCitiesTutorial.Services
+{
+   	public class CosmosDbService : ICosmosDbService
+	{
+    	private Container _container;
+
+    	public CosmosDbService(CosmosClient dbClient, string databaseName, string containerName)
+    	{
+        	this._container = dbClient.GetContainer(databaseName, containerName);
+    	}
+
+    	public async Task AddItemAsync(Item item)
+    	{
+        	await this._container.CreateItemAsync<Item>(item, new PartitionKey(item.Country));
+    	}
+
+    	public async Task<IEnumerable<Item>> GetItemsAsync(string queryString)
+    	{
+        	var query = this._container.GetItemQueryIterator<Item>(new QueryDefinition(queryString));
+        	List<Item> results = new List<Item>();
+        	while (query.HasMoreResults)
+        	{
+            	var response = await query.ReadNextAsync();
+
+                results.AddRange(response.ToList());
+        	}
+
+        	return results;
+   	}
+	}
+}
+
+
