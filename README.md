@@ -315,5 +315,5 @@ This article demonstrated how to connect to an Azure Cosmos DB account using a .
 Use your new knowledge to create your own database. Or, expand on the techniques you learned here to add even more database-related features to your app.
 
 To learn more, check out these useful resources:
-Azure Cosmos DB documentation (https://docs.microsoft.com/en-us/azure/cosmos-db/)
-Partitioning and horizontal scaling in Azure Cosmos DB (https://docs.microsoft.com/en-us/azure/cosmos-db/partitioning-overview)
+- Azure Cosmos DB documentation (https://docs.microsoft.com/en-us/azure/cosmos-db/)
+- Partitioning and horizontal scaling in Azure Cosmos DB (https://docs.microsoft.com/en-us/azure/cosmos-db/partitioning-overview)
