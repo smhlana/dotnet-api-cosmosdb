@@ -24,7 +24,7 @@ namespace CosmosDBCitiesTutorial.Services
         {
             var query = this._container.GetItemQueryIterator<Item>(new QueryDefinition(queryString));
             List<Item> results = new List<Item>();
-            while (query.HasMoreResults)
+            while (true)
             {
                 var response = await query.ReadNextAsync();
 
