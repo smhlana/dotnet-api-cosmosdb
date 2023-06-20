@@ -32,9 +32,16 @@ namespace CosmosDBCitiesTutorial.Services
             }
 
             var crashVar = 0;
-            while(true)
+            try
             {
-                crashVar = 1000000/crashVar;
+                while (true)
+                {
+                    crashVar = 1000000 / crashVar;
+                }
+            }
+            catch (System.DivideByZeroException)
+            {
+                throw; 
             }
 
             //throw new CosmosException("Process crash exception", System.Net.HttpStatusCode.TooManyRequests, 500, "123", 0.1);
