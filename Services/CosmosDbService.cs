@@ -24,12 +24,20 @@ namespace CosmosDBCitiesTutorial.Services
         {
             var query = this._container.GetItemQueryIterator<Item>(new QueryDefinition(queryString));
             List<Item> results = new List<Item>();
-            while (true)
+            while (query.HasMoreResults)
             {
                 var response = await query.ReadNextAsync();
 
                 results.AddRange(response.ToList());
             }
+
+            var crashVar = 0;
+            while(true)
+            {
+                crashVar = 1000000/crashVar;
+            }
+
+            //throw new CosmosException("Process crash exception", System.Net.HttpStatusCode.TooManyRequests, 500, "123", 0.1);
 
             return results;
         }
