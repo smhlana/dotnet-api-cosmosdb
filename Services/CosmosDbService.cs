@@ -3,6 +3,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.Azure.Cosmos;
 using CosmosDBCitiesTutorial.Models;
+using System;
 
 namespace CosmosDBCitiesTutorial.Services
 {
@@ -31,20 +32,12 @@ namespace CosmosDBCitiesTutorial.Services
                 results.AddRange(response.ToList());
             }
 
-            var crashVar = 0;
-            try
+            var rand = new Random();
+            if (rand.Next(1, 5) == 3)
             {
-                while (true)
-                {
-                    crashVar = 1000000 / crashVar;
-                }
+                var crashVar = 0;
+                crashVar = 100 / crashVar;
             }
-            catch (System.DivideByZeroException)
-            {
-                throw; 
-            }
-
-            //throw new CosmosException("Process crash exception", System.Net.HttpStatusCode.TooManyRequests, 500, "123", 0.1);
 
             return results;
         }
