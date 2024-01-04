@@ -1,7 +1,8 @@
 repo_name: smhlana/dotnet-api-cosmosdb
-report_id: 6d42b9067c46f1cb141a7cafe92469a2
+report_id: b35e35437cb92e63c048e8b17d3eff40
+version: 0.1
 repo_type: Public
-timestamp: '2023-12-14T09:25:49+00:00'
+timestamp: '2024-01-04T14:53:27+00:00'
 requested_by: smhlana
 provider: github
 branch: main
@@ -16,6 +17,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Languages
   image_url: https://img.stackshare.io/service/1015/1200px-C_Sharp_wordmark.svg.png
+  detection_source_url: https://github.com/smhlana/dotnet-api-cosmosdb
   detection_source: Repo Metadata
 - name: ".NET"
   description: A free, cross-platform, open source developer platform for building
@@ -27,6 +29,7 @@ tools:
   category: Languages & Frameworks
   sub_category: Frameworks (Full Stack)
   image_url: https://img.stackshare.io/service/1014/IoPy1dce_400x400.png
+  detection_source_url: https://github.com/smhlana/dotnet-api-cosmosdb/blob/main/CosmosDBCitiesTutorial.csproj
   detection_source: CosmosDBCitiesTutorial.csproj
   last_updated_by: smhlana
   last_updated_on: 2021-02-07 13:11:35.000000000 Z
@@ -68,6 +71,7 @@ tools:
   category: Data Stores
   sub_category: Database Tools
   image_url: https://img.stackshare.io/service/109221/default_b888cdf5617d936aa6aacf130911906955508639.png
+  detection_source_url: https://github.com/smhlana/dotnet-api-cosmosdb/blob/main/obj/Debug/net5.0/CosmosDBCitiesTutorial.csproj.FileListAbsolute.txt
   detection_source: obj/Debug/net5.0/CosmosDBCitiesTutorial.csproj.FileListAbsolute.txt
   last_updated_by: smhlana
   last_updated_on: 2021-02-07 13:11:35.000000000 Z
@@ -79,6 +83,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Version Control System
   image_url: https://img.stackshare.io/service/1046/git.png
+  detection_source_url: https://github.com/smhlana/dotnet-api-cosmosdb
   detection_source: Repo Metadata
 - name: GitHub Actions
   description: Automate your workflow from idea to production
@@ -88,6 +93,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Continuous Integration
   image_url: https://img.stackshare.io/service/11563/actions.png
+  detection_source_url: https://github.com/smhlana/dotnet-api-cosmosdb/blob/main/.github/workflows/main_startup-failures.yml
   detection_source: ".github/workflows/main_startup-failures.yml"
   last_updated_by: Sesethu Mhlana
   last_updated_on: 2023-06-15 05:21:16.000000000 Z
@@ -99,6 +105,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Package Managers
   image_url: https://img.stackshare.io/service/2637/6I3oEOP4_400x400.jpg
+  detection_source_url: https://github.com/smhlana/dotnet-api-cosmosdb/blob/main/CosmosDBCitiesTutorial.csproj
   detection_source: CosmosDBCitiesTutorial.csproj
   last_updated_by: smhlana
   last_updated_on: 2021-02-07 13:11:35.000000000 Z
@@ -111,6 +118,7 @@ tools:
   category: Build, Test, Deploy
   sub_category: Integrated Development Environment
   image_url: https://img.stackshare.io/service/1451/SR2hUhQN.png
+  detection_source_url: https://github.com/smhlana/dotnet-api-cosmosdb/blob/main/CosmosDBCitiesTutorial.sln
   detection_source: CosmosDBCitiesTutorial.sln
   last_updated_by: smhlana
   last_updated_on: 2021-02-07 13:11:35.000000000 Z
@@ -122,6 +130,7 @@ tools:
   category: Communications
   sub_category: Large Language Model Tools
   image_url: https://img.stackshare.io/service/48790/default_5b6c6b73f1ff3775c85d2a1ba954cb87e30cbf13.jpg
+  detection_source_url: https://github.com/smhlana/dotnet-api-cosmosdb/blob/main/obj/Debug/net5.0/CosmosDBCitiesTutorial.csproj.FileListAbsolute.txt
   detection_source: obj/Debug/net5.0/CosmosDBCitiesTutorial.csproj.FileListAbsolute.txt
   last_updated_by: smhlana
   last_updated_on: 2021-02-07 13:11:35.000000000 Z
